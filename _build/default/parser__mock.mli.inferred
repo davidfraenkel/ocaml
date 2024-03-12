@@ -1,5 +1,7 @@
-type token = TO | INT of int | ID of string | FOR | EQUAL | EOF
+type token = TO | IDENT of string | FOR | EQUAL | EOF | CST of Ast.constant
 val menhir_begin_marker : int
-val xv_stmt : Ast.expr
-val xv_main : Ast.expr
+val xv_stmt : Ast.stmt
+val xv_main : Ast.stmt
+val xv_ident : Ast.ident
+val xv_expr : Ast.expr
 val menhir_end_marker : int

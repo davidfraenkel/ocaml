@@ -1,0 +1,31 @@
+# dune build
+# OCAMLPARAM: unset
+# Shared cache: disabled
+# Shared cache location: /Users/davidfraenkel/.cache/dune/db
+# Workspace root: /Users/davidfraenkel/4.semester/spo/test/test
+# Auto-detected concurrency: 8
+# Dune context:
+#  { name = "default"
+#  ; kind = "default"
+#  ; profile = Dev
+#  ; merlin = true
+#  ; fdo_target_exe = None
+#  ; build_dir = In_build_dir "default"
+#  ; installed_env =
+#      map
+#        { "INSIDE_DUNE" :
+#            "/Users/davidfraenkel/4.semester/spo/test/test/_build/default"
+#        ; "OCAML_COLOR" : "always"
+#        ; "OPAMCOLOR" : "always"
+#        }
+#  ; instrument_with = []
+#  }
+$ /Users/davidfraenkel/.opam/ocaml-base-compiler/bin/ocamlc.opt -config > /var/folders/fz/s5csb_w941vcyvdp808cgc0c0000gn/T/dune_fc0d50_output
+$ (cd _build/default && /Users/davidfraenkel/.opam/ocaml-base-compiler/bin/ocamllex -q -o lexer.ml lexer.mll)
+$ (cd _build/default && /Users/davidfraenkel/.opam/ocaml-base-compiler/bin/ocamldep.opt -modules -impl lexer.ml) > _build/default/.interp.eobjs/lexer.impl.d
+$ (cd _build/default && /Users/davidfraenkel/.opam/ocaml-base-compiler/bin/ocamlc.opt -g -bin-annot -I .interp.eobjs/byte -no-alias-deps -opaque -o .interp.eobjs/byte/lexer.cmo -c -impl lexer.ml)
+$ (cd _build/default && /Users/davidfraenkel/.opam/ocaml-base-compiler/bin/ocamlc.opt -g -bin-annot -I .interp.eobjs/byte -no-alias-deps -opaque -o .interp.eobjs/byte/interp.cmo -c -impl interp.ml)
+$ (cd _build/default && /Users/davidfraenkel/.opam/ocaml-base-compiler/bin/ocamlopt.opt -g -I .interp.eobjs/byte -I .interp.eobjs/native -intf-suffix .ml -no-alias-deps -opaque -o .interp.eobjs/native/lexer.cmx -c -impl lexer.ml)
+$ (cd _build/default && /Users/davidfraenkel/.opam/ocaml-base-compiler/bin/ocamlopt.opt -g -I .interp.eobjs/byte -I .interp.eobjs/native -intf-suffix .ml -no-alias-deps -opaque -o .interp.eobjs/native/interp.cmx -c -impl interp.ml)
+$ (cd _build/default && /Users/davidfraenkel/.opam/ocaml-base-compiler/bin/ocamlopt.opt -g -o interp.exe .interp.eobjs/native/ast.cmx .interp.eobjs/native/parser.cmx .interp.eobjs/native/lexer.cmx .interp.eobjs/native/interp.cmx)
+# Promoting "_build/default/interp.exe" to "interp.exe"
